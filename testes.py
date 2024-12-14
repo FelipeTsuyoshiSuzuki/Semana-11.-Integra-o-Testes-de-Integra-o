@@ -15,7 +15,8 @@ class alunoTest(unittest.TestCase):
         self.conexao = ConexaoClass.conexaoMongoDB(self, url = 'localhost.com', banco = 'faculdade')
 
     def test_salvarAluno(self):
-        print('Escreva o seu método aqui...')
+        responta = self.aluno.salvar(conexao = self.conexao, colecao='aluno')
+        self.assertEqual(True, responta, "Aluno Salvo incorretamente")
 
     def test_salvarTurma(self):
         resposta = self.turma.salvar(conexao = self.conexao, colecao = 'turma');

@@ -8,4 +8,9 @@ class AlunoClass:
         return 'Aluno: ' + self.nome + ' ' + self.sobrenome + ' - Nota: ' + str(self.nota);
 
     def salvar(self, conexao, colecao):
-        print('Escreva o seu método aqui...')
+        mydict = self.__dict__
+        mydict['nome'] = self.nome
+        mydict['sobrenome'] = self.sobrenome
+        mydict['nota'] = self.nota
+        x = conexao[colecao].insert_one(mydict)
+        return x.acknowledged
